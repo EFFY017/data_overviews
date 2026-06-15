@@ -169,8 +169,10 @@ function PipelineSection() {
           <React.Fragment key={i}>
             {i > 0 && <div className="pipe-arrow">→</div>}
             <div className="pipe-card">
-              <span className="pipe-num">0{i + 1}</span>
-              <h3 className="pipe-name">{s.name}</h3>
+              <div className="pipe-title-row">
+                <span className="pipe-num">0{i + 1}</span>
+                <h3 className="pipe-name">{s.name}</h3>
+              </div>
               <span className="pipe-en">{s.nameEn}</span>
               <div className="pipe-count">{s.datasets} <span>相关数据集</span></div>
               <p className="pipe-desc">{s.description}</p>
