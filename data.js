@@ -177,7 +177,7 @@
     { name: '新华医院', nameEn: 'Xinhua Hospital', type: '医院' },
     { name: '复旦大学', nameEn: 'Fudan University', type: '高校' },
     { name: '上海交通大学', nameEn: 'SJTU', type: '高校' },
-    { name: '中科院计算所', nameEn: 'ICT, CAS', type: '研究院所' },
+    // { name: '中科院计算所', nameEn: 'ICT, CAS', type: '研究院所' },
     { name: '仁济医院', nameEn: 'Renji Hospital', type: '医院' },
     { name: '湖南儿童医院', nameEn: "Hunan Children's Hospital", type: '医院' },
     { name: '六院放射科', nameEn: 'Sixth Hospital', type: '医院' },
