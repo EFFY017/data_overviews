@@ -110,7 +110,7 @@
     },
     {
       id: 'cell_painting', name: 'Cell Painting 数据', nameEn: 'CELL PAINTING',
-      color: '#A855F7', totalSize: 0.00, datasetCount: 1, sizedCount: 0, exclusiveCount: 0, pctStorage: 0,
+      color: '#A855F7', totalSize: 3.00, datasetCount: 1, sizedCount: 0, exclusiveCount: 0, pctStorage: 1.6,
       description: '高通量细胞形态学图像与表型特征数据',
       featured: [
         { name: 'morphology_v2', size: '—', records: '5M+', exclusive: false, description: '细胞形态学高通量图像数据集' },
@@ -175,17 +175,17 @@
 
   window.PARTNERS = [
     { name: '新华医院', nameEn: 'Xinhua Hospital', type: '医院' },
-    { name: '仁济医院', nameEn: 'Renji Hospital', type: '医院' },
-    { name: '湖南儿童医院', nameEn: "Hunan Children's Hospital", type: '医院' },
-    { name: '六院放射科', nameEn: 'Sixth Hospital', type: '医院' },
     { name: '复旦大学', nameEn: 'Fudan University', type: '高校' },
     { name: '上海交通大学', nameEn: 'SJTU', type: '高校' },
     { name: '中科院计算所', nameEn: 'ICT, CAS', type: '研究院所' },
+    { name: '仁济医院', nameEn: 'Renji Hospital', type: '医院' },
+    { name: '湖南儿童医院', nameEn: "Hunan Children's Hospital", type: '医院' },
+    { name: '六院放射科', nameEn: 'Sixth Hospital', type: '医院' },
     { name: 'NIH', nameEn: 'National Institutes of Health', type: '国际机构' },
     { name: 'NCBI', nameEn: 'NCBI', type: '国际机构' },
+    { name: 'EBI', nameEn: 'European Bioinformatics', type: '国际机构' },
     { name: 'PhysioNet', nameEn: 'PhysioNet', type: '开放数据' },
     { name: 'TCIA', nameEn: 'Cancer Imaging Archive', type: '开放数据' },
-    { name: 'EBI', nameEn: 'European Bioinformatics', type: '国际机构' },
   ];
 
   window.HERO_STATS = [
