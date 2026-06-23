@@ -38,6 +38,7 @@ export interface DataCategory {
   sizedCount: number;
   recordSum: number;
   recordDisp: string;
+  hasRecord: boolean;
   exclusiveCount: number;
   pctStorage: number;
   featured: FeaturedItem[];

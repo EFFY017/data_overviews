@@ -10,13 +10,31 @@ const TB = Math.pow(1024, 4);
 
 // 领域元数据：按后端 category 原始字符串映射到展示用 id / 名称 / 配色 / 描述
 const META: Record<string, { id: string; name: string; nameEn: string; color: string; description: string }> = {
-  '知识库': { id: 'knowledge', name: '知识库', nameEn: 'KNOWLEDGE BASE', color: '#6366F1',
-    description: '医学知识图谱、本体、临床指南、疾病百科等结构化知识资源' },
+  // 知识库拆分为 5 个结构化子领域
+  '医学本体与术语': { id: 'kb_ontology', name: '医学本体与术语', nameEn: 'ONTOLOGIES & TERMS', color: '#6366F1',
+    description: 'UMLS/SNOMED CT/HPO/MONDO 等标准术语与本体，数据归一化与互操作的基石' },
+  '药物·化合物与药理知识': { id: 'kb_pharma', name: '药物·化合物与药理知识', nameEn: 'DRUG & PHARMACOLOGY', color: '#F59E0B',
+    description: 'DrugBank/ChEMBL/PubChem 等药物、化合物、药理、代谢组与质谱知识，覆盖新药研发全链路' },
+  '分子互作与通路网络': { id: 'kb_interaction', name: '分子互作与通路网络', nameEn: 'INTERACTIONS & PATHWAYS', color: '#0284C7',
+    description: 'STRING/STITCH/Reactome 等蛋白互作、分子相互作用网络与生物通路，系统生物学规模旗舰' },
+  '组学参考知识库': { id: 'kb_omics_ref', name: '组学参考知识库', nameEn: 'OMICS REFERENCE', color: '#059669',
+    description: 'dbSNP/UniProt/PDB/GWAS Catalog 等基因、变异、蛋白序列与结构的权威参考库' },
+  '疾病·表型·靶点知识图谱': { id: 'kb_kg', name: '疾病·表型·靶点知识图谱', nameEn: 'DISEASE–TARGET KG', color: '#C026D3',
+    description: 'Open Targets/DisGeNET/PheKnowLator 等疾病-表型-靶点关联知识图谱，支撑推理与 RAG' },
   'EHR数据（Real-wod部分）（请区分Trial产生的ideal environment 下的EHR请放到后续的Clinical study& study里去）':
     { id: 'ehr', name: 'EHR 数据（真实世界）', nameEn: 'EHR / RWD', color: '#EF4444',
       description: '电子健康记录、真实世界临床数据与重症监护数据' },
-  '医学文本数据': { id: 'medtext', name: '医学文本数据', nameEn: 'MEDICAL TEXT', color: '#F59E0B',
-    description: '医学文献全文、临床笔记、医疗问答与NLP语料' },
+  // 医学文本拆分为 5 个功能子领域（并接收原知识库中的文献/指南）
+  '医学文献与语料': { id: 'med_corpus', name: '医学文献与语料', nameEn: 'LITERATURE CORPORA', color: '#DC2626',
+    description: 'PubMed/PMC 全量文献、教科书、临床指南与实体标注语料，海量预训练底座' },
+  '医学考试与问答': { id: 'med_qa', name: '医学考试与问答', nameEn: 'EXAMS & QA', color: '#D97706',
+    description: '覆盖中/英/日/法/俄多语种的医学考试与问答数据集，评测广度领先' },
+  '医患对话': { id: 'med_dialogue', name: '医患对话', nameEn: 'CLINICAL DIALOGUE', color: '#CA8A04',
+    description: 'MedDialog-CN/cMedQA 等真实医患对话语料，支撑对话式问诊' },
+  '医学信息抽取与NER': { id: 'med_ie', name: '医学信息抽取与NER', nameEn: 'NER & IE', color: '#9333EA',
+    description: '疾病/化学/物种实体识别与关系抽取标注，文本结构化能力底座' },
+  '医学评测基准': { id: 'med_eval', name: '医学评测基准', nameEn: 'BENCHMARKS', color: '#475569',
+    description: 'HealthBench/DDXPLUS/MedRBench 等医学能力评测基准与教育案例' },
   'Clinical Study/Tial Data': { id: 'clinical_trial', name: 'Clinical Study / Trial 数据', nameEn: 'CLINICAL TRIALS', color: '#8B5CF6',
     description: '临床试验设计、患者入组、终点数据与试验结果' },
   '放射数据': { id: 'radiology', name: '放射数据', nameEn: 'RADIOLOGY', color: '#3B82F6',
@@ -81,10 +99,10 @@ type CategoryWithRows = DataCategory & { _rows?: MockRow[] };
 const categories: CategoryWithRows[] = order.map((key): CategoryWithRows => {
   const meta = META[key] || { id: slug(key), name: key, nameEn: '', color: '#94A3B8', description: '' };
   const rows = groups[key];
-  let bytes = 0, sized = 0, recordSum = 0;
+  let bytes = 0, sized = 0, recordSum = 0, recorded = 0;
   rows.forEach((d) => {
     if (typeof d.sizeBytes === 'number') { bytes += d.sizeBytes; sized++; }
-    if (typeof d.recordCount === 'number') recordSum += d.recordCount;
+    if (typeof d.recordCount === 'number') { recordSum += d.recordCount; recorded++; }
   });
   // featured：按存储大小降序的真实数据集名（用于卡片标签）
   const featured = rows.slice().sort((a, b) => {
@@ -100,6 +118,7 @@ const categories: CategoryWithRows[] = order.map((key): CategoryWithRows => {
     sizedCount: sized,
     recordSum: recordSum,                       // 数据量（recordCount 之和）
     recordDisp: fmtCount(recordSum),
+    hasRecord: recorded > 0,                     // 该领域是否有任一数据集统计了数据量
     exclusiveCount: 0,
     pctStorage: grandBytes > 0 ? +((bytes / grandBytes) * 100).toFixed(1) : 0,
     featured: featured,
@@ -157,8 +176,8 @@ export const GROWTH_DATA: GrowthPoint[] = [
 
 export const PARTNERS: Partner[] = [
   { name: '新华医院', nameEn: 'Xinhua Hospital', type: '医院' },
-  { name: '复旦大学', nameEn: 'Fudan University', type: '高校' },
   { name: '上海交通大学', nameEn: 'SJTU', type: '高校' },
+  { name: '复旦大学', nameEn: 'Fudan University', type: '高校' },
   { name: '仁济医院', nameEn: 'Renji Hospital', type: '医院' },
   { name: '湖南儿童医院', nameEn: "Hunan Children's Hospital", type: '医院' },
   { name: '六院放射科', nameEn: 'Sixth Hospital', type: '医院' },
@@ -182,11 +201,11 @@ const byId: Record<string, DataCategory> = {};
 categories.forEach((c) => { byId[c.id] = c; });
 const pipelineDef = [
   { name: '临床诊断', nameEn: 'Diagnosis', description: '辅助疾病诊断与鉴别，覆盖影像、病理、检验等场景',
-    cats: ['knowledge', 'ehr', 'medtext', 'radiology', 'segmentation', 'rad_image_report', 'pathology', 'prenatal_hpo'] },
+    cats: ['kb_ontology', 'kb_kg', 'med_corpus', 'med_qa', 'med_dialogue', 'ehr', 'radiology', 'segmentation', 'rad_image_report', 'pathology', 'prenatal_hpo'] },
   { name: '科学研究', nameEn: 'Research', description: '支撑基础医学、转化医学与生物信息学研究',
-    cats: ['knowledge', 'medtext', 'gene', 'single_cell', 'rna', 'cell_painting', 'pathology', 'vision_3d', 'vision_general', 'sports', 'audio_visual', 'video_grounding'] },
+    cats: ['kb_ontology', 'kb_pharma', 'kb_interaction', 'kb_omics_ref', 'kb_kg', 'med_corpus', 'med_ie', 'med_eval', 'gene', 'single_cell', 'rna', 'cell_painting', 'pathology', 'vision_3d', 'vision_general', 'sports', 'audio_visual', 'video_grounding'] },
   { name: '新药研发', nameEn: 'Drug R&D', description: '靶点发现、化合物筛选、临床试验数据支持',
-    cats: ['knowledge', 'clinical_trial', 'gene', 'nucleic_drug', 'cell_painting', 'single_cell', 'rna'] },
+    cats: ['kb_pharma', 'kb_interaction', 'kb_omics_ref', 'kb_kg', 'clinical_trial', 'gene', 'nucleic_drug', 'cell_painting', 'single_cell', 'rna'] },
 ];
 export const PIPELINE_STAGES: PipelineStage[] = pipelineDef.map((s) => {
   let ds = 0, rec = 0;

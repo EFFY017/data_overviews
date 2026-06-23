@@ -3,7 +3,7 @@ import type { MockRow } from './types';
 export const MOCK_DATA: MockRow[] = [
     {
         "id": 1,
-        "category": "知识库",
+        "category": "组学参考知识库",
         "name": "OMIM",
         "sizeRaw": "420K",
         "sizeDisp": "420 KB",
@@ -20,7 +20,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 2,
-        "category": "知识库",
+        "category": "疾病·表型·靶点知识图谱",
         "name": "OrphaNet",
         "sizeRaw": "313M",
         "sizeDisp": "313.0 MB",
@@ -37,7 +37,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 3,
-        "category": "知识库",
+        "category": "药物·化合物与药理知识",
         "name": "Drugbank",
         "sizeRaw": "2.3G",
         "sizeDisp": "2.3 GB",
@@ -54,7 +54,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 4,
-        "category": "知识库",
+        "category": "药物·化合物与药理知识",
         "name": "CheMBL",
         "sizeRaw": "20G",
         "sizeDisp": "20.0 GB",
@@ -71,7 +71,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 5,
-        "category": "知识库",
+        "category": "药物·化合物与药理知识",
         "name": "ChEBI",
         "sizeRaw": "7.5G",
         "sizeDisp": "7.5 GB",
@@ -88,7 +88,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 6,
-        "category": "知识库",
+        "category": "药物·化合物与药理知识",
         "name": "PubChem",
         "sizeRaw": "52G",
         "sizeDisp": "52.0 GB",
@@ -105,7 +105,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 7,
-        "category": "知识库",
+        "category": "药物·化合物与药理知识",
         "name": "CTRP",
         "sizeRaw": "1.9G",
         "sizeDisp": "1.9 GB",
@@ -122,7 +122,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 8,
-        "category": "知识库",
+        "category": "分子互作与通路网络",
         "name": "STITCH",
         "sizeRaw": "137G",
         "sizeDisp": "137.0 GB",
@@ -139,7 +139,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 9,
-        "category": "知识库",
+        "category": "分子互作与通路网络",
         "name": "BioGRID",
         "sizeRaw": "2.2G",
         "sizeDisp": "2.2 GB",
@@ -156,7 +156,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 10,
-        "category": "知识库",
+        "category": "分子互作与通路网络",
         "name": "STRING",
         "sizeRaw": "32M",
         "sizeDisp": "32.0 MB",
@@ -173,7 +173,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 11,
-        "category": "知识库",
+        "category": "分子互作与通路网络",
         "name": "IntAct",
         "sizeRaw": "6.8G",
         "sizeDisp": "6.8 GB",
@@ -190,7 +190,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 12,
-        "category": "知识库",
+        "category": "疾病·表型·靶点知识图谱",
         "name": "MarkerDB",
         "sizeRaw": "664K",
         "sizeDisp": "664 KB",
@@ -207,7 +207,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 13,
-        "category": "知识库",
+        "category": "药物·化合物与药理知识",
         "name": "TTD",
         "sizeRaw": "23M",
         "sizeDisp": "23.0 MB",
@@ -224,7 +224,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 14,
-        "category": "知识库",
+        "category": "药物·化合物与药理知识",
         "name": "BindingDB",
         "sizeRaw": "9.5G",
         "sizeDisp": "9.5 GB",
@@ -241,7 +241,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 15,
-        "category": "知识库",
+        "category": "分子互作与通路网络",
         "name": "KEGG",
         "sizeRaw": "",
         "sizeDisp": null,
@@ -258,7 +258,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 16,
-        "category": "知识库",
+        "category": "药物·化合物与药理知识",
         "name": "DGIdb",
         "sizeRaw": "50M",
         "sizeDisp": "50.0 MB",
@@ -275,7 +275,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 17,
-        "category": "知识库",
+        "category": "药物·化合物与药理知识",
         "name": "PharmGKB/ClinPGx",
         "sizeRaw": "34M",
         "sizeDisp": "34.0 MB",
@@ -292,7 +292,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 18,
-        "category": "知识库",
+        "category": "疾病·表型·靶点知识图谱",
         "name": "Open Targets",
         "sizeRaw": "293G",
         "sizeDisp": "293.0 GB",
@@ -309,7 +309,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 19,
-        "category": "知识库",
+        "category": "组学参考知识库",
         "name": "GWAS Catalog",
         "sizeRaw": "717M",
         "sizeDisp": "717.0 MB",
@@ -326,7 +326,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 20,
-        "category": "知识库",
+        "category": "医学文献与语料",
         "name": "PubTator",
         "sizeRaw": "3.4G",
         "sizeDisp": "3.4 GB",
@@ -343,7 +343,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 21,
-        "category": "知识库",
+        "category": "疾病·表型·靶点知识图谱",
         "name": "DisGeNET",
         "sizeRaw": "",
         "sizeDisp": null,
@@ -360,7 +360,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 22,
-        "category": "知识库",
+        "category": "医学本体与术语",
         "name": "Disease Ontology （Human Disease Ontology (HDO)）",
         "sizeRaw": "",
         "sizeDisp": null,
@@ -377,7 +377,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 23,
-        "category": "知识库",
+        "category": "医学本体与术语",
         "name": "Human Phenotype Ontology",
         "sizeRaw": "227M",
         "sizeDisp": "227.0 MB",
@@ -394,7 +394,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 24,
-        "category": "知识库",
+        "category": "医学本体与术语",
         "name": "MONDO Disease Ontology",
         "sizeRaw": "455M",
         "sizeDisp": "455.0 MB",
@@ -411,7 +411,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 25,
-        "category": "知识库",
+        "category": "医学本体与术语",
         "name": "UBERON",
         "sizeRaw": "164M",
         "sizeDisp": "164.0 MB",
@@ -428,7 +428,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 26,
-        "category": "知识库",
+        "category": "分子互作与通路网络",
         "name": "Bgee",
         "sizeRaw": "1.2G",
         "sizeDisp": "1.2 GB",
@@ -445,7 +445,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 27,
-        "category": "知识库",
+        "category": "分子互作与通路网络",
         "name": "CTD",
         "sizeRaw": "7.4G",
         "sizeDisp": "7.4 GB",
@@ -462,7 +462,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 28,
-        "category": "知识库",
+        "category": "分子互作与通路网络",
         "name": "Human PPI Network",
         "sizeRaw": "319M",
         "sizeDisp": "319.0 MB",
@@ -479,7 +479,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 29,
-        "category": "知识库",
+        "category": "分子互作与通路网络",
         "name": "Reactome",
         "sizeRaw": "128M",
         "sizeDisp": "128.0 MB",
@@ -496,7 +496,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 30,
-        "category": "知识库",
+        "category": "药物·化合物与药理知识",
         "name": "Drug Central",
         "sizeRaw": "4.5G",
         "sizeDisp": "4.5 GB",
@@ -513,7 +513,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 31,
-        "category": "知识库",
+        "category": "医学文献与语料",
         "name": "Mayo Clinic",
         "sizeRaw": "1.2G",
         "sizeDisp": "1.2 GB",
@@ -530,7 +530,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 32,
-        "category": "知识库",
+        "category": "药物·化合物与药理知识",
         "name": "SIDER",
         "sizeRaw": "634M",
         "sizeDisp": "634.0 MB",
@@ -547,7 +547,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 33,
-        "category": "知识库",
+        "category": "医学本体与术语",
         "name": "UMLS",
         "sizeRaw": "17G",
         "sizeDisp": "17.0 GB",
@@ -564,7 +564,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 34,
-        "category": "知识库",
+        "category": "医学本体与术语",
         "name": "NCBI Taxonomy Database",
         "sizeRaw": "1.2G",
         "sizeDisp": "1.2 GB",
@@ -581,7 +581,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 35,
-        "category": "知识库",
+        "category": "医学本体与术语",
         "name": "phenomebrowser",
         "sizeRaw": "84M",
         "sizeDisp": "84.0 MB",
@@ -598,7 +598,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 36,
-        "category": "知识库",
+        "category": "分子互作与通路网络",
         "name": "Pathway Commons",
         "sizeRaw": "1.25G",
         "sizeDisp": "1.2 GB",
@@ -615,7 +615,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 37,
-        "category": "知识库",
+        "category": "医学本体与术语",
         "name": "EFO (Experimental Factor Ontology)",
         "sizeRaw": "93M",
         "sizeDisp": "93.0 MB",
@@ -632,7 +632,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 38,
-        "category": "知识库",
+        "category": "医学本体与术语",
         "name": "CL (Cell Ontology)",
         "sizeRaw": "21M",
         "sizeDisp": "21.0 MB",
@@ -649,7 +649,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 39,
-        "category": "知识库",
+        "category": "药物·化合物与药理知识",
         "name": "HMDB (Human Metabolome Database)",
         "sizeRaw": "790M",
         "sizeDisp": "790.0 MB",
@@ -666,7 +666,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 40,
-        "category": "知识库",
+        "category": "医学本体与术语",
         "name": "Symptom Ontology",
         "sizeRaw": "227KB",
         "sizeDisp": "227 KB",
@@ -683,7 +683,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 41,
-        "category": "知识库",
+        "category": "医学本体与术语",
         "name": "PRO（Protein Ontology）",
         "sizeRaw": "740M",
         "sizeDisp": "740.0 MB",
@@ -700,7 +700,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 42,
-        "category": "知识库",
+        "category": "分子互作与通路网络",
         "name": "WikiPathways",
         "sizeRaw": "1015M",
         "sizeDisp": "1015.0 MB",
@@ -717,7 +717,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 43,
-        "category": "知识库",
+        "category": "疾病·表型·靶点知识图谱",
         "name": "PheKnowLator",
         "sizeRaw": "3.0G",
         "sizeDisp": "3.0 GB",
@@ -734,7 +734,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 44,
-        "category": "知识库",
+        "category": "药物·化合物与药理知识",
         "name": "DrugMechDB",
         "sizeRaw": "43M",
         "sizeDisp": "43.0 MB",
@@ -751,7 +751,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 45,
-        "category": "知识库",
+        "category": "医学本体与术语",
         "name": "MedGen",
         "sizeRaw": "466M",
         "sizeDisp": "466.0 MB",
@@ -768,7 +768,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 46,
-        "category": "知识库",
+        "category": "组学参考知识库",
         "name": "UKbiobank",
         "sizeRaw": "",
         "sizeDisp": null,
@@ -785,7 +785,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 47,
-        "category": "知识库",
+        "category": "组学参考知识库",
         "name": "Human Protein Atlas (HPA)",
         "sizeRaw": "53M",
         "sizeDisp": "53.0 MB",
@@ -802,7 +802,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 48,
-        "category": "知识库",
+        "category": "组学参考知识库",
         "name": "dbSNP",
         "sizeRaw": "496G",
         "sizeDisp": "496.0 GB",
@@ -819,7 +819,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 49,
-        "category": "知识库",
+        "category": "组学参考知识库",
         "name": "PDB（Protein Data Bank）",
         "sizeRaw": "",
         "sizeDisp": null,
@@ -836,7 +836,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 50,
-        "category": "知识库",
+        "category": "医学本体与术语",
         "name": "SNOMED CT",
         "sizeRaw": "1.2G",
         "sizeDisp": "1.2 GB",
@@ -853,7 +853,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 51,
-        "category": "知识库",
+        "category": "医学本体与术语",
         "name": "MESH",
         "sizeRaw": "1.3G",
         "sizeDisp": "1.3 GB",
@@ -870,7 +870,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 52,
-        "category": "知识库",
+        "category": "医学本体与术语",
         "name": "HGNC",
         "sizeRaw": "24M",
         "sizeDisp": "24.0 MB",
@@ -887,7 +887,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 53,
-        "category": "知识库",
+        "category": "组学参考知识库",
         "name": "UniProt",
         "sizeRaw": "4.1G",
         "sizeDisp": "4.1 GB",
@@ -904,7 +904,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 54,
-        "category": "知识库",
+        "category": "医学本体与术语",
         "name": "RxNorm",
         "sizeRaw": "",
         "sizeDisp": null,
@@ -921,7 +921,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 55,
-        "category": "知识库",
+        "category": "医学本体与术语",
         "name": "bioregistry",
         "sizeRaw": "",
         "sizeDisp": null,
@@ -938,7 +938,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 56,
-        "category": "知识库",
+        "category": "医学本体与术语",
         "name": "bioportal",
         "sizeRaw": "1.1G",
         "sizeDisp": "1.1 GB",
@@ -955,7 +955,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 57,
-        "category": "知识库",
+        "category": "医学本体与术语",
         "name": "ONTOLOGY SEARCH",
         "sizeRaw": "96G",
         "sizeDisp": "96.0 GB",
@@ -972,7 +972,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 58,
-        "category": "知识库",
+        "category": "医学文献与语料",
         "name": "Staspearls guideline",
         "sizeRaw": "39M",
         "sizeDisp": "39.0 MB",
@@ -989,7 +989,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 59,
-        "category": "知识库",
+        "category": "医学文献与语料",
         "name": "Disease Guideline",
         "sizeRaw": "4.9G",
         "sizeDisp": "4.9 GB",
@@ -1006,7 +1006,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 60,
-        "category": "知识库",
+        "category": "医学文献与语料",
         "name": "Medical Text Knowledge",
         "sizeRaw": "294G",
         "sizeDisp": "294.0 GB",
@@ -1023,7 +1023,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 61,
-        "category": "知识库",
+        "category": "医学文献与语料",
         "name": "Pubmed HPO",
         "sizeRaw": "300G",
         "sizeDisp": "300.0 GB",
@@ -1040,7 +1040,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 62,
-        "category": "知识库",
+        "category": "医学文献与语料",
         "name": "医学教科书",
         "sizeRaw": "10GB",
         "sizeDisp": "10.0 GB",
@@ -1057,7 +1057,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 63,
-        "category": "知识库",
+        "category": "药物·化合物与药理知识",
         "name": "MoNA (MassBank of North America)",
         "sizeRaw": "2.65G",
         "sizeDisp": "2.6 GB",
@@ -1074,7 +1074,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 64,
-        "category": "知识库",
+        "category": "药物·化合物与药理知识",
         "name": "GNPS (Global Natural Products Social Molecular Networking)",
         "sizeRaw": "4.1G",
         "sizeDisp": "4.1 GB",
@@ -1091,7 +1091,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 65,
-        "category": "知识库",
+        "category": "医学文献与语料",
         "name": "Pubmed",
         "sizeRaw": "50T",
         "sizeDisp": "50.0 TB",
@@ -1414,7 +1414,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 84,
-        "category": "医学文本数据",
+        "category": "医学文献与语料",
         "name": "Meds-Ins",
         "sizeRaw": "8GB",
         "sizeDisp": "8.0 GB",
@@ -1431,7 +1431,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 85,
-        "category": "医学文本数据",
+        "category": "医学评测基准",
         "name": "MedRBench",
         "sizeRaw": "10MB",
         "sizeDisp": "10.0 MB",
@@ -1448,7 +1448,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 86,
-        "category": "医学文本数据",
+        "category": "医学文献与语料",
         "name": "PMC-OA",
         "sizeRaw": "70GB",
         "sizeDisp": "70.0 GB",
@@ -1465,7 +1465,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 87,
-        "category": "医学文本数据",
+        "category": "医学文献与语料",
         "name": "医学教科书",
         "sizeRaw": "10GB",
         "sizeDisp": "10.0 GB",
@@ -1482,7 +1482,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 88,
-        "category": "医学文本数据",
+        "category": "医学评测基准",
         "name": "mededportal",
         "sizeRaw": "2G",
         "sizeDisp": "2.0 GB",
@@ -1499,7 +1499,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 89,
-        "category": "医学文本数据",
+        "category": "医学考试与问答",
         "name": "USMLE MedQA",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -1516,7 +1516,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 90,
-        "category": "医学文本数据",
+        "category": "医学考试与问答",
         "name": "PubMedQA",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -1533,7 +1533,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 91,
-        "category": "医学文本数据",
+        "category": "医学考试与问答",
         "name": "MedMCQA",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -1550,7 +1550,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 92,
-        "category": "医学文本数据",
+        "category": "医学考试与问答",
         "name": "CMExam",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -1567,7 +1567,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 93,
-        "category": "医学文本数据",
+        "category": "医学考试与问答",
         "name": "CMB",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -1584,7 +1584,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 94,
-        "category": "医学文本数据",
+        "category": "医学考试与问答",
         "name": "MLEC-QA",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -1601,7 +1601,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 95,
-        "category": "医学文本数据",
+        "category": "医学考试与问答",
         "name": "IgakuQA",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -1618,7 +1618,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 96,
-        "category": "医学文本数据",
+        "category": "医学考试与问答",
         "name": "FrenchMedMCQA",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -1635,7 +1635,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 97,
-        "category": "医学文本数据",
+        "category": "医学考试与问答",
         "name": "RuMedDaNet",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -1652,7 +1652,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 98,
-        "category": "医学文本数据",
+        "category": "医学考试与问答",
         "name": "Head-QA",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -1669,7 +1669,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 99,
-        "category": "医学文本数据",
+        "category": "医患对话",
         "name": "MedDialog-CN",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -1686,7 +1686,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 100,
-        "category": "医学文本数据",
+        "category": "医患对话",
         "name": "cMedQA v2.0",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -1703,7 +1703,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 101,
-        "category": "医学文本数据",
+        "category": "医学考试与问答",
         "name": "PMC-LLaMA-Ins",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -1720,7 +1720,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 102,
-        "category": "医学文本数据",
+        "category": "医学考试与问答",
         "name": "MMedBench",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -1737,7 +1737,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 103,
-        "category": "医学文本数据",
+        "category": "医学评测基准",
         "name": "BioLoRD",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -1754,7 +1754,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 104,
-        "category": "医学文本数据",
+        "category": "医学考试与问答",
         "name": "EBMS",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -1771,7 +1771,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 105,
-        "category": "医学文本数据",
+        "category": "医学考试与问答",
         "name": "MEDIQA-AnS",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -1788,7 +1788,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 106,
-        "category": "医学文本数据",
+        "category": "医学考试与问答",
         "name": "MedQuaD",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -1805,7 +1805,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 107,
-        "category": "医学文本数据",
+        "category": "医学考试与问答",
         "name": "MASH-QA",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -1822,7 +1822,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 108,
-        "category": "医学文本数据",
+        "category": "医学考试与问答",
         "name": "BioASQ",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -1839,7 +1839,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 109,
-        "category": "医学文本数据",
+        "category": "医学考试与问答",
         "name": "emrQA",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -1856,7 +1856,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 110,
-        "category": "医学文本数据",
+        "category": "医学考试与问答",
         "name": "COVID19-QA",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -1873,7 +1873,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 111,
-        "category": "医学文本数据",
+        "category": "医学信息抽取与NER",
         "name": "BC5-chem",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -1890,7 +1890,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 112,
-        "category": "医学文本数据",
+        "category": "医学信息抽取与NER",
         "name": "BC4-chem",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -1907,7 +1907,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 113,
-        "category": "医学文本数据",
+        "category": "医学信息抽取与NER",
         "name": "BC5-disease",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -1924,7 +1924,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 114,
-        "category": "医学文本数据",
+        "category": "医学信息抽取与NER",
         "name": "i2b2 2010",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -1941,7 +1941,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 115,
-        "category": "医学文本数据",
+        "category": "医学信息抽取与NER",
         "name": "Species-800",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -1958,7 +1958,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 116,
-        "category": "医学文本数据",
+        "category": "医学信息抽取与NER",
         "name": "PharmaCoNER",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -1975,7 +1975,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 117,
-        "category": "医学文本数据",
+        "category": "医学信息抽取与NER",
         "name": "CANTEMIST",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -1992,7 +1992,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 118,
-        "category": "医学文本数据",
+        "category": "医学信息抽取与NER",
         "name": "i2b2 2012",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -2009,7 +2009,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 119,
-        "category": "医学文本数据",
+        "category": "医学评测基准",
         "name": "HealthBench",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -2026,7 +2026,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 120,
-        "category": "医学文本数据",
+        "category": "医学评测基准",
         "name": "DDXPLUS",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -2043,7 +2043,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 121,
-        "category": "医学文本数据",
+        "category": "医学信息抽取与NER",
         "name": "HoC",
         "sizeRaw": "未下载",
         "sizeDisp": null,
@@ -2060,7 +2060,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 122,
-        "category": "医学文本数据",
+        "category": "医学文献与语料",
         "name": "TrialPanorama（paper全文）",
         "sizeRaw": "5GB",
         "sizeDisp": "5.0 GB",
@@ -2077,7 +2077,7 @@ export const MOCK_DATA: MockRow[] = [
     },
     {
         "id": 123,
-        "category": "医学文本数据",
+        "category": "医学文献与语料",
         "name": "MyTrialmind（paper全文）",
         "sizeRaw": "4GB",
         "sizeDisp": "4.0 GB",

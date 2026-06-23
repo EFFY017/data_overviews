@@ -80,7 +80,7 @@ function DatasetExplorer({ viewMode, filterCat }) {
                     </span>
                   </td>
                   <td className="td-mono">{d.size}</td>
-                  <td className="td-mono">{d.records ? d.records + (d.recordUnit ? ' ' + d.recordUnit : '') : '—'}</td>
+                  <td className="td-mono">{d.records ? d.records + (d.recordUnit ? ' ' + d.recordUnit : '') : '未统计'}</td>
                   <td className="td-desc">{d.description}</td>
                 </tr>
               ))}
@@ -103,14 +103,14 @@ function DatasetExplorer({ viewMode, filterCat }) {
               <h4 className="ds-name">{d.name}</h4>
               <div className="ds-meta">
                 <span className="ds-size">{d.size}</span>
-                {d.records && <span>{d.records}{d.recordUnit ? ' ' + d.recordUnit : ' 条'}</span>}
+                <span>{d.records ? d.records + (d.recordUnit ? ' ' + d.recordUnit : ' 条') : '未统计'}</span>
               </div>
               {expanded === d.id && (
                 <div className="ds-detail">
                   {d.description && <p className="ds-desc">{d.description}</p>}
                   <dl className="ds-fields">
                     <div><dt>大小</dt><dd>{d.size}</dd></div>
-                    <div><dt>数据量</dt><dd>{d.records ? d.records + (d.recordUnit ? ' ' + d.recordUnit : '') : '—'}</dd></div>
+                    <div><dt>数据量</dt><dd>{d.records ? d.records + (d.recordUnit ? ' ' + d.recordUnit : '') : '未统计'}</dd></div>
                     {d.sample && <div><dt>样本</dt><dd>{d.sample}</dd></div>}
                   </dl>
                 </div>

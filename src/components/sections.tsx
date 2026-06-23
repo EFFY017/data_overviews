@@ -73,19 +73,17 @@ function DomainCard({ cat, index, onClick }) {
           <span className="dom-en">{cat.nameEn}</span>
         </div>
       </div>
-      <div className="dom-size">
-        {cat.totalSize === 0 ? '0.00' : cat.totalSize}
-        <span className="dom-size-u">TB</span>
-      </div>
-      <div className="dom-bar-row">
-        <div className="dom-bar">
-          <div className="dom-bar-fill"
-               style={{width: Math.max(cat.pctStorage, 2) + '%', background: cat.color}}>
-          </div>
+      <div className="dom-figs">
+        <div className="dom-size">
+          {cat.totalSize === 0 ? '0.00' : cat.totalSize}
+          <span className="dom-size-u">TB</span>
         </div>
-      </div>
-      <div className="dom-meta">
-        <span>数据量 {cat.recordDisp || '—'}</span>
+        <div className="dom-records">
+          <span className="dom-records-label">数据量</span>
+          {cat.hasRecord
+            ? <>{cat.recordDisp}<span className="dom-records-u">条</span></>
+            : <span className="dom-records-na">未统计</span>}
+        </div>
       </div>
       <div className="dom-tags">
         {tags.map((t, i) => (
@@ -100,31 +98,125 @@ function DomainCard({ cat, index, onClick }) {
   );
 }
 
-/* ── Distribution Chart ───────────────────────── */
+/* ── Distribution Chart (饼图) ─────────────────── */
+function donutArc(cx, cy, r, ir, a0, a1) {
+  const p = (radius, ang) => [cx + radius * Math.cos(ang), cy + radius * Math.sin(ang)];
+  const [x0, y0] = p(r, a0), [x1, y1] = p(r, a1);
+  const [xi1, yi1] = p(ir, a1), [xi0, yi0] = p(ir, a0);
+  const large = (a1 - a0) > Math.PI ? 1 : 0;
+  return `M ${x0} ${y0} A ${r} ${r} 0 ${large} 1 ${x1} ${y1} L ${xi1} ${yi1} A ${ir} ${ir} 0 ${large} 0 ${xi0} ${yi0} Z`;
+}
+
+const PIE_NA = '#D9DBE3'; // 未统计领域的中性灰
+
+// 把领域品牌色降饱和、统一明度，得到一组柔和但仍可区分的多彩配色
+function mutedColor(hex) {
+  const r = parseInt(hex.slice(1, 3), 16) / 255;
+  const g = parseInt(hex.slice(3, 5), 16) / 255;
+  const b = parseInt(hex.slice(5, 7), 16) / 255;
+  const max = Math.max(r, g, b), min = Math.min(r, g, b);
+  let h = 0;
+  if (max !== min) {
+    const d = max - min;
+    h = max === r ? (g - b) / d + (g < b ? 6 : 0) : max === g ? (b - r) / d + 2 : (r - g) / d + 4;
+    h /= 6;
+  }
+  const S = 0.40, L = 0.66; // 统一低饱和、中高明度
+  const hue2rgb = (p, q, t) => {
+    if (t < 0) t += 1; if (t > 1) t -= 1;
+    if (t < 1 / 6) return p + (q - p) * 6 * t;
+    if (t < 1 / 2) return q;
+    if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+    return p;
+  };
+  const q = L < 0.5 ? L * (1 + S) : L + S - L * S;
+  const p = 2 * L - q;
+  const toHex = (v) => Math.round(v * 255).toString(16).padStart(2, '0');
+  return '#' + toHex(hue2rgb(p, q, h + 1 / 3)) + toHex(hue2rgb(p, q, h)) + toHex(hue2rgb(p, q, h - 1 / 3));
+}
+
+function fmtSize(bytes) {
+  const TB = 1024 ** 4, GB = 1024 ** 3, MB = 1024 ** 2, KB = 1024;
+  if (bytes >= TB) return +(bytes / TB).toFixed(bytes / TB >= 100 ? 0 : 1) + ' TB';
+  if (bytes >= GB) return +(bytes / GB).toFixed(1) + ' GB';
+  if (bytes >= MB) return +(bytes / MB).toFixed(1) + ' MB';
+  if (bytes >= KB) return +(bytes / KB).toFixed(1) + ' KB';
+  return bytes + ' B';
+}
+
 function DistributionChart() {
-  const sorted = [...DATA_CATEGORIES].sort((a, b) => b.recordSum - a.recordSum);
-  const mx = sorted[0].recordSum || 1;
-  const total = sorted.reduce((s, c) => s + c.recordSum, 0);
+  const [active, setActive] = React.useState(null);
+  const sorted = [...DATA_CATEGORIES].sort((a, b) => b.totalBytes - a.totalBytes);
+  const total = sorted.reduce((s, c) => s + c.totalBytes, 0);
+
+  // 计算每个扇区的起止角（从正上方 -90° 顺时针）
+  const cx = 110, cy = 110, r = 104, ir = 62;
+  let acc = -Math.PI / 2;
+  const slices = sorted.map(c => {
+    const frac = total > 0 ? c.totalBytes / total : 0;
+    const a0 = acc;
+    const a1 = acc + frac * Math.PI * 2;
+    acc = a1;
+    const hasSize = c.sizedCount > 0;
+    return {
+      c, frac, a0, a1, pct: frac * 100, hasSize,
+      color: hasSize ? mutedColor(c.color) : PIE_NA,
+    };
+  });
+
+  const act = active != null ? slices.find(s => s.c.id === active) : null;
+
   return (
     <div className="chart-card">
-      <h3 className="chart-h">数据量分布 <span className="chart-hen">Data Volume Distribution</span></h3>
-      <div className="dist-rows">
-        {sorted.map(c => {
-          const pct = total > 0 ? c.recordSum / total * 100 : 0;
-          return (
-          <div key={c.id} className="dist-r">
-            <span className="dist-dot" style={{background: c.color}}></span>
-            <span className="dist-label">{c.name}</span>
-            <div className="dist-track">
-              <div className="dist-fill" style={{
-                width: (c.recordSum / mx * 100) + '%', background: c.color
-              }}></div>
+      <h3 className="chart-h">存储分布 <span className="chart-hen">Storage Distribution</span></h3>
+      <div className="pie-caption">
+        {act ? (
+          <>
+            <span className="pie-caption-dot" style={{background: act.color}}></span>
+            <span className="pie-caption-name">{act.c.name}</span>
+            <span className="pie-caption-meta">
+              {act.hasSize
+                ? `${fmtSize(act.c.totalBytes)} · ${act.pct >= 0.05 ? act.pct.toFixed(1) + '%' : '<0.1%'}`
+                : '未统计'}
+            </span>
+          </>
+        ) : (
+          <span className="pie-caption-empty">悬停色块或图例查看各领域占比</span>
+        )}
+      </div>
+      <div className="pie-wrap">
+        <svg className="pie-svg" viewBox="0 0 220 220" role="img" aria-label="存储分布饼图">
+          {slices.filter(s => s.frac > 0).map(s => (
+            <path key={s.c.id} d={donutArc(cx, cy, r, ir, s.a0, s.a1)}
+                  fill={s.color} stroke="#fff" strokeWidth={1.5}
+                  style={{ opacity: act && act.c.id !== s.c.id ? 0.28 : 1, cursor: 'pointer' }}
+                  onMouseEnter={() => setActive(s.c.id)}
+                  onMouseLeave={() => setActive(null)} />
+          ))}
+          <text x={cx} y={cy - 4} className="pie-center-num" textAnchor="middle">
+            {act ? (act.hasSize ? fmtSize(act.c.totalBytes) : '未统计') : fmtSize(total)}
+          </text>
+          <text x={cx} y={cy + 15} className="pie-center-lbl" textAnchor="middle">
+            {act ? (act.hasSize ? (act.pct >= 0.05 ? act.pct.toFixed(1) + '%' : '<0.1%') : '') : '存储合计'}
+          </text>
+        </svg>
+        <div className="pie-legend">
+          {slices.map(s => (
+            <div key={s.c.id}
+                 className={'pie-leg' + (active === s.c.id ? ' pie-leg-on' : '')}
+                 onMouseEnter={() => setActive(s.c.id)}
+                 onMouseLeave={() => setActive(null)}
+                 title={s.hasSize
+                   ? `${s.c.name}：${fmtSize(s.c.totalBytes)}（${s.pct.toFixed(1)}%）`
+                   : `${s.c.name}：未统计`}>
+              <span className="pie-leg-dot" style={{background: s.color}}></span>
+              <span className="pie-leg-name">{s.c.name}</span>
+              <span className="pie-leg-pct">
+                {!s.hasSize ? '未统计' : (s.pct >= 0.05 ? s.pct.toFixed(1) + '%' : '<0.1%')}
+              </span>
             </div>
-            <span className="dist-val">{c.recordDisp || '—'}</span>
-            <span className="dist-pct">{pct > 0 ? pct.toFixed(1) + '%' : '—'}</span>
-          </div>
-          );
-        })}
+          ))}
+        </div>
       </div>
     </div>
   );
