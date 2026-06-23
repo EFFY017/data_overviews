@@ -1,5 +1,6 @@
-// explorer.jsx — Dataset Explorer with search and filter
-const { DATA_CATEGORIES: CATS, ALL_DATASETS: DS } = window;
+// DatasetExplorer.tsx — Dataset Explorer with search and filter
+import React from 'react';
+import { DATA_CATEGORIES as CATS, ALL_DATASETS as DS } from '../data/datasets';
 
 function DatasetExplorer({ viewMode, filterCat }) {
   const [search, setSearch] = React.useState('');
@@ -79,7 +80,7 @@ function DatasetExplorer({ viewMode, filterCat }) {
                     </span>
                   </td>
                   <td className="td-mono">{d.size}</td>
-                  <td className="td-mono">{d.records || '—'}</td>
+                  <td className="td-mono">{d.records ? d.records + (d.recordUnit ? ' ' + d.recordUnit : '') : '—'}</td>
                   <td className="td-desc">{d.description}</td>
                 </tr>
               ))}
@@ -102,9 +103,18 @@ function DatasetExplorer({ viewMode, filterCat }) {
               <h4 className="ds-name">{d.name}</h4>
               <div className="ds-meta">
                 <span className="ds-size">{d.size}</span>
-                {d.records && <span>{d.records} 条</span>}
+                {d.records && <span>{d.records}{d.recordUnit ? ' ' + d.recordUnit : ' 条'}</span>}
               </div>
-              {expanded === d.id && <p className="ds-desc">{d.description}</p>}
+              {expanded === d.id && (
+                <div className="ds-detail">
+                  {d.description && <p className="ds-desc">{d.description}</p>}
+                  <dl className="ds-fields">
+                    <div><dt>大小</dt><dd>{d.size}</dd></div>
+                    <div><dt>数据量</dt><dd>{d.records ? d.records + (d.recordUnit ? ' ' + d.recordUnit : '') : '—'}</dd></div>
+                    {d.sample && <div><dt>样本</dt><dd>{d.sample}</dd></div>}
+                  </dl>
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -122,4 +132,4 @@ function DatasetExplorer({ viewMode, filterCat }) {
   );
 }
 
-Object.assign(window, { DatasetExplorer });
+export { DatasetExplorer };

@@ -1,10 +1,12 @@
-// dashboard-app.jsx — Main App
-const { useTweaks, TweaksPanel, TweakSection, TweakRadio } = window;
-const {
+// App.tsx — Main App
+import React from 'react';
+import { useTweaks, TweaksPanel, TweakSection, TweakRadio } from './components/TweaksPanel';
+import {
   HeroSection, DomainGrid, DistributionChart,
-  GrowthChart, PipelineSection, PartnersSection
-} = window;
-const { DatasetExplorer } = window;
+  GrowthChart, PipelineSection, PartnersSection,
+} from './components/sections';
+import { DatasetExplorer } from './components/DatasetExplorer';
+import logo from './assets/logo.svg';
 
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "theme": "indigo",
@@ -64,7 +66,7 @@ function DashboardApp() {
 
       <footer className="dash-footer">
         <div className="footer-in">
-          <img src="Logo jpg-06.svg" alt="OneX Intelligence"
+          <img src={logo} alt="OneX Intelligence"
                style={{height: '22px', filter: 'brightness(0) invert(1)', opacity: .6}} />
           <span className="footer-txt">数据资产概览 · Data Asset Overview</span>
         </div>
@@ -73,4 +75,4 @@ function DashboardApp() {
   );
 }
 
-ReactDOM.createRoot(document.getElementById('root')).render(<DashboardApp />);
+export { DashboardApp };

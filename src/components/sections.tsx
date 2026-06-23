@@ -1,5 +1,9 @@
-// sections.jsx — Dashboard visual sections
-const { DATA_CATEGORIES, HERO_STATS, GROWTH_DATA, PARTNERS, PIPELINE_STAGES } = window;
+// sections.tsx — Dashboard visual sections
+import React from 'react';
+import {
+  DATA_CATEGORIES, HERO_STATS, GROWTH_DATA, PARTNERS, PIPELINE_STAGES,
+} from '../data/datasets';
+import logo from '../assets/logo.svg';
 
 function useCountUp(target) {
   return target;
@@ -11,7 +15,7 @@ function HeroSection() {
     <header className="hero">
       <div className="hero-inner">
         <div className="hero-brand">
-          <img src="Logo jpg-06.svg" className="hero-logo-img" alt="OneX Intelligence" />
+          <img src={logo} className="hero-logo-img" alt="OneX Intelligence" />
           <div className="hero-divider"></div>
           <p className="hero-sub">数据资产概览<span className="hero-sub-en">Data Asset Overview</span></p>
         </div>
@@ -45,7 +49,7 @@ function DomainGrid({ onSelect }) {
     <section className="sec">
       <div className="sec-head">
         <h2 className="sec-title">数据领域 <span className="sec-en">Data Domains</span></h2>
-        <span className="sec-badge">{DATA_CATEGORIES.length} 个领域 · 共 289 条目 · 点击跳转至数据集</span>
+        <span className="sec-badge">{DATA_CATEGORIES.length} 个领域 · 共 {DATA_CATEGORIES.reduce((s, c) => s + c.datasetCount, 0)} 个数据集 · 点击卡片跳转至数据集</span>
       </div>
       <div className="dom-grid">
         {DATA_CATEGORIES.map((c, i) => (
@@ -61,7 +65,7 @@ function DomainCard({ cat, index, onClick }) {
   const rest = cat.datasetCount - tags.length;
   return (
     <div className="dom-card" onClick={onClick}
-         style={{'--cc': cat.color}}>
+         style={{'--cc': cat.color} as React.CSSProperties}>
       <div className="dom-head">
         <span className="dom-dot" style={{background: cat.color}}></span>
         <div>
@@ -81,7 +85,7 @@ function DomainCard({ cat, index, onClick }) {
         </div>
       </div>
       <div className="dom-meta">
-        <span>{cat.datasetCount} 条目</span>
+        <span>数据量 {cat.recordDisp || '—'}</span>
       </div>
       <div className="dom-tags">
         {tags.map((t, i) => (
@@ -98,25 +102,29 @@ function DomainCard({ cat, index, onClick }) {
 
 /* ── Distribution Chart ───────────────────────── */
 function DistributionChart() {
-  const sorted = [...DATA_CATEGORIES].sort((a, b) => b.totalSize - a.totalSize);
-  const mx = sorted[0].totalSize;
+  const sorted = [...DATA_CATEGORIES].sort((a, b) => b.recordSum - a.recordSum);
+  const mx = sorted[0].recordSum || 1;
+  const total = sorted.reduce((s, c) => s + c.recordSum, 0);
   return (
     <div className="chart-card">
-      <h3 className="chart-h">存储分布 <span className="chart-hen">Storage Distribution</span></h3>
+      <h3 className="chart-h">数据量分布 <span className="chart-hen">Data Volume Distribution</span></h3>
       <div className="dist-rows">
-        {sorted.map(c => (
+        {sorted.map(c => {
+          const pct = total > 0 ? c.recordSum / total * 100 : 0;
+          return (
           <div key={c.id} className="dist-r">
             <span className="dist-dot" style={{background: c.color}}></span>
             <span className="dist-label">{c.name}</span>
             <div className="dist-track">
               <div className="dist-fill" style={{
-                width: (c.totalSize / mx * 100) + '%', background: c.color
+                width: (c.recordSum / mx * 100) + '%', background: c.color
               }}></div>
             </div>
-            <span className="dist-val">{c.totalSize} TB</span>
-            <span className="dist-pct">{c.pctStorage > 0 ? c.pctStorage + '%' : '—'}</span>
+            <span className="dist-val">{c.recordDisp || '—'}</span>
+            <span className="dist-pct">{pct > 0 ? pct.toFixed(1) + '%' : '—'}</span>
           </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
@@ -188,7 +196,7 @@ function PipelineSection() {
 function PartnersSection() {
   const xinhua = PARTNERS.find(p => p.name === '新华医院');
   const others = PARTNERS.filter(p => p.name !== '新华医院');
-  const groups = {};
+  const groups: Record<string, typeof PARTNERS> = {};
   others.forEach(p => { (groups[p.type] = groups[p.type] || []).push(p); });
   return (
     <section className="sec">
@@ -226,7 +234,7 @@ function PartnersSection() {
   );
 }
 
-Object.assign(window, {
+export {
   HeroSection, DomainGrid, DistributionChart,
-  GrowthChart, PipelineSection, PartnersSection
-});
+  GrowthChart, PipelineSection, PartnersSection,
+};
